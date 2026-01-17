@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #f5f5f7; color: #1d1d1f; }
+        /* body { font-family: 'Inter', sans-serif; background-color: #f5f5f7; color: #1d1d1f; } */
+        body { 
+            /* 优先使用 Inter 渲染英文，Noto Sans SC 渲染中文 */
+            font-family: 'Inter', 'Noto Sans SC', sans-serif; 
+            background-color: #f5f5f7; 
+            color: #1d1d1f; 
+            line-height: 1.6; /* 增加行间距，提升阅读舒适度 */
+        }
         .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.3); }
         .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
@@ -34,11 +41,14 @@
         <section class="mb-8">
             <h2 class="text-2xl font-semibold mb-4 px-2">Biography</h2>
             <div class="glass-card p-6 leading-relaxed text-gray-700">
+                <p class="mb-4">
                 I am currently the Director of Ambient Capture Team at ACE Robotics (大晓机器人). Previously, I served as a Scientist (青年科学家) at Shanghai AI Lab, where I led the World Model Team. 
                 I earned my Ph.D. from the National University of Singapore. My first Ph.D. supervisor was Prof. Michael Yu Wang, founding director of the Robotics Center at HKUST and currently Chief Scientist at Daimon Robotics. My graduating Ph.D. supervisor was Prof. Chew Chee Meng, a veteran humanoid robotics researcher who led Team RO-PE from NUS to win first prize in both "dribble and kick" and "Technical Challenge" in the adult-size humanoid league at RoboCup 2010.
-                
+                </p>
+                <p class="mb-4">
                 Following my Ph.D., I had the privilege of joining S-Lab at Nanyang Technological University, where I have been working with Prof. Ziwei Liu since 2020. These have been truly wonderful years of collaboration, and I am honored to maintain a long-term and close research partnership with him.
                 My research interests span 3D Vision, World Models, and Embodied Intelligence. I continuously recruit full-time researchers/engineers and interns. I especially welcome passionate candidates interested in pursuing Ph.D. studies—I have many opportunities to recommend outstanding candidates to excellent collaborators both domestically and internationally. Please feel free to reach out!
+                </p>
             </div>
         </section>
 
