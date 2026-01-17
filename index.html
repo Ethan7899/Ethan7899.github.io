@@ -19,6 +19,14 @@
         .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.3); }
         .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        /* 未访问 */
+        a.mylink         { color: #ff6600; }
+        /* 已访问 */
+        a.mylink:visited { color: #8844aa; }
+        /* 鼠标悬停 */
+        a.mylink:hover   { color: #00aaff; }
+        /* 点击瞬间 */
+        a.mylink:active  { color: #ff0000; }
     </style>
 </head>
 <body class="py-12 px-4 md:px-0">
@@ -47,7 +55,7 @@
                 <p class="mb-4">
                 I earned my Ph.D. from the National University of Singapore. My first Ph.D. supervisor was 
                 <!-- Prof. Michael Yu Wang,  -->
-                <a href="https://ece.hkust.edu.hk/mywang" target="_blank" rel="noopener">Prof. Michael Yu Wang</a>,
+                <a class="mylink" href="https://ece.hkust.edu.hk/mywang" target="_blank" rel="noopener">Prof. Michael Yu Wang</a>,
                 founding director of the Robotics Center at HKUST and currently Chief Scientist at Daimon Robotics. My graduating Ph.D. supervisor was Prof. Chew Chee Meng, a veteran humanoid robotics researcher who led Team RO-PE from NUS to win first prize in both "dribble and kick" and "Technical Challenge" in the adult-size humanoid league at RoboCup 2010.
                 </p>
                 <p class="mb-4">
