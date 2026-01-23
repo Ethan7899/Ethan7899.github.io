@@ -71,11 +71,27 @@
     });
 </script>
 
+<script>
+    // 切换显示/隐藏
+    function toggleBibtex(id) {
+        const el = document.getElementById(id);
+        el.classList.toggle('hidden');
+    }
+
+    // 一键复制功能
+    function copyBib(id) {
+        const text = document.querySelector(`#${id} pre`).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('BibTeX copied to clipboard!');
+        });
+    }
+</script>
+
 <body class="py-12 px-4 md:px-0">
     <div class="max-w-4xl mx-auto">
         
         <nav class="sticky top-0 z-50 glass-card mx-auto max-w-4xl mt-4 px-6 py-3 flex justify-between items-center mb-8 border-none shadow-sm">
-            <div class="text-sm font-bold text-gray-800">Liang PAN</div>
+            <!-- <div class="text-sm font-bold text-gray-800">Liang PAN</div> -->
             <div class="flex gap-6 text-[11px] uppercase tracking-widest font-semibold text-gray-500">
                 <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
                 <a href="#news" class="hover:text-blue-600 transition-colors">News</a>
@@ -315,7 +331,40 @@
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2507.12465" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
                         <a href="https://github.com/ziangcao0312/PhysX-3D" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:8ltlIWNaFlkJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJcoio:AHkA5jQAAAAAaXNauir_VeRvPJI3S2nriTclnAo&scisig=AHkA5jQAAAAAaXNaur1bqBBR10czLiT93e7TB0Y&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
+                        <!-- <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:8ltlIWNaFlkJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJcoio:AHkA5jQAAAAAaXNauir_VeRvPJI3S2nriTclnAo&scisig=AHkA5jQAAAAAaXNaur1bqBBR10czLiT93e7TB0Y&scisf=4&ct=citation&cd=-1&hl=en" class="class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                         <!-- <button onclick="toggleBibtex('paper1')" 
+                                class="bg-black text-white px-3 py-1 rounded-full text-[11px] font-medium hover:bg-gray-800 active:scale-95 transition-all">
+                            Cite
+                        </button> -->
+                        <!-- <button onclick="toggleBibtex('paper1')" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-quote-left mr-1"></i> Cite
+                        </button> -->
+                        <button onclick="toggleBibtex('paper1')" 
+                                class="bg-amber-500 text-white px-3 py-1 rounded-full text-[11px] font-bold hover:bg-amber-600 active:scale-95 transition-all shadow-sm">
+                            <i class="fas fa-quote-left mr-1 text-[9px]"></i> Cite
+                        </button>
+                    </div>
+                    <div id="paper1" class="hidden mt-4 animate-fadeIn">
+                        <div class="relative group">
+                            <pre class="bg-gray-900 text-gray-300 p-4 rounded-xl text-[10px] overflow-x-auto leading-relaxed">
+@article{cao2025physx,
+  title={PhysX-3D: Physical-Grounded 3D Asset Generation},
+  author={Cao, Ziang and Chen, Zhaoxi and Pan, Liang and Liu, Ziwei},
+  journal={arXiv preprint arXiv:2507.12465},
+  year={2025}
+}
+
+@article{physxanything,
+  title={PhysX-Anything: Simulation-Ready Physical 3D Assets from Single Image},
+  author={Cao, Ziang and Hong, Fangzhou and Chen, Zhaoxi and Pan, Liang and Liu, Ziwei},
+  journal={arXiv preprint arXiv:2511.13648},
+  year={2025}
+}
+</pre>
+                            <button onclick="copyBib('paper1')" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded text-[9px]">
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -326,7 +375,29 @@
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2411.18624" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
                         <a href="https://github.com/3DTopia/GeneMAN" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:ZiZewkugPUYJ:scholar.google.com/&output=citation&scisdr=Cn1nfVALENeqsMJdDXY:AHkA5jQAAAAAaXNbFXaUaARKofd0JvduhnN_GUk&scisig=AHkA5jQAAAAAaXNbFR4Kc7prmJVknKasTM-6DSs&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
+                        <!-- <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:ZiZewkugPUYJ:scholar.google.com/&output=citation&scisdr=Cn1nfVALENeqsMJdDXY:AHkA5jQAAAAAaXNbFXaUaARKofd0JvduhnN_GUk&scisig=AHkA5jQAAAAAaXNbFR4Kc7prmJVknKasTM-6DSs&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <!-- <button onclick="toggleBibtex('paper2')" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-quote-left mr-1"></i> Cite
+                        </button> -->
+                        <button onclick="toggleBibtex('paper2')" 
+                                class="bg-amber-500 text-white px-3 py-1 rounded-full text-[11px] font-bold hover:bg-amber-600 active:scale-95 transition-all shadow-sm">
+                            <i class="fas fa-quote-left mr-1 text-[9px]"></i> Cite
+                        </button>
+                    </div>
+                    <div id="paper2" class="hidden mt-4 animate-fadeIn">
+                        <div class="relative group">
+                            <pre class="bg-gray-900 text-gray-300 p-4 rounded-xl text-[10px] overflow-x-auto leading-relaxed">
+@article{wang2024geneman,
+  title={GeneMAN: Generalizable Single-Image 3D Human Reconstruction from Multi-Source Human Data},
+  author={Wang, Wentao and Ye, Hang and Hong, Fangzhou and Yang, Xue and Zhang, Jianfu and Wang, Yizhou and Liu, Ziwei and Pan, Liang},
+  journal={arXiv preprint arXiv:2411.18624},
+  year={2024}
+}
+</pre>
+                            <button onclick="copyBib('paper2')" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded text-[9px]">
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
                 
@@ -337,7 +408,29 @@
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2508.05609" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
                         <a href="https://github.com/3DTopia/Hi3DEval" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:GhqLvNnr1VgJ:scholar.google.com/&output=citation&scisdr=Cn1nfVAKENeqsMJdY7w:AHkA5jQAAAAAaXNbe7wpNg08it0r8Wiu_DCA03g&scisig=AHkA5jQAAAAAaXNbe887boXEHKKJWPtm3FzONfM&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
+                        <!-- <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:GhqLvNnr1VgJ:scholar.google.com/&output=citation&scisdr=Cn1nfVAKENeqsMJdY7w:AHkA5jQAAAAAaXNbe7wpNg08it0r8Wiu_DCA03g&scisig=AHkA5jQAAAAAaXNbe887boXEHKKJWPtm3FzONfM&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <!-- <button onclick="toggleBibtex('paper3')" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-quote-left mr-1"></i> Cite
+                        </button> -->
+                        <button onclick="toggleBibtex('paper3')" 
+                                class="bg-amber-500 text-white px-3 py-1 rounded-full text-[11px] font-bold hover:bg-amber-600 active:scale-95 transition-all shadow-sm">
+                            <i class="fas fa-quote-left mr-1 text-[9px]"></i> Cite
+                        </button>
+                    </div>
+                    <div id="paper3" class="hidden mt-4 animate-fadeIn">
+                        <div class="relative group">
+                            <pre class="bg-gray-900 text-gray-300 p-4 rounded-xl text-[10px] overflow-x-auto leading-relaxed">
+@article{zhang2025hi3deval,
+  title={Hi3DEval: Advancing 3D Generation Evaluation with Hierarchical Validity},
+  author={Zhang, Yuhan and Zhuo, Long and Chu, Ziyang and Wu, Tong and Li, Zhibing and Pan, Liang and Lin, Dahua and Liu, Ziwei},
+  journal={arXiv preprint arXiv:2508.05609},
+  year={2025}
+}
+</pre>
+                            <button onclick="copyBib('paper3')" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded text-[9px]">
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -348,7 +441,30 @@
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2411.02336" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
                         <a href="https://github.com/3DTopia/MVPaint" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:lXGd8ZfXgK8J:scholar.google.com/&output=citation&scisdr=Cn1nfVAKENeqsMJdlOw:AHkA5jQAAAAAaXNbjOyoGLDgxPNBcVr-frEET-Q&scisig=AHkA5jQAAAAAaXNbjMRdaYuzEuU-5aLtTAFJ8qI&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
+                        <!-- <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:lXGd8ZfXgK8J:scholar.google.com/&output=citation&scisdr=Cn1nfVAKENeqsMJdlOw:AHkA5jQAAAAAaXNbjOyoGLDgxPNBcVr-frEET-Q&scisig=AHkA5jQAAAAAaXNbjMRdaYuzEuU-5aLtTAFJ8qI&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <!-- <button onclick="toggleBibtex('paper4')" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-quote-left mr-1"></i> Cite
+                        </button> -->
+                        <button onclick="toggleBibtex('paper4')" 
+                                class="bg-amber-500 text-white px-3 py-1 rounded-full text-[11px] font-bold hover:bg-amber-600 active:scale-95 transition-all shadow-sm">
+                            <i class="fas fa-quote-left mr-1 text-[9px]"></i> Cite
+                        </button>
+                    </div>
+                    <div id="paper4" class="hidden mt-4 animate-fadeIn">
+                        <div class="relative group">
+                            <pre class="bg-gray-900 text-gray-300 p-4 rounded-xl text-[10px] overflow-x-auto leading-relaxed">
+@inproceedings{cheng2025mvpaint,
+  title={Mvpaint: Synchronized multi-view diffusion for painting anything 3d},
+  author={Cheng, Wei and Mu, Juncheng and Zeng, Xianfang and Chen, Xin and Pang, Anqi and Zhang, Chi and Wang, Zhibin and Fu, Bin and Yu, Gang and Liu, Ziwei and others},
+  booktitle={Proceedings of the Computer Vision and Pattern Recognition Conference},
+  pages={585--594},
+  year={2025}
+}
+</pre>
+                            <button onclick="copyBib('paper4')" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded text-[9px]">
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -359,7 +475,29 @@
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://openreview.net/pdf?id=M7KyLjuN0A" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
                         <a href="https://github.com/3DTopia/DynamicCity" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:CdW4r-1aqQcJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJd6TQ:AHkA5jQAAAAAaXNb8TQ4KpwhBQYm7Rjt4T1WFgY&scisig=AHkA5jQAAAAAaXNb8VrySnBtvaI29CPgYgXWygk&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
+                        <!-- <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:CdW4r-1aqQcJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJd6TQ:AHkA5jQAAAAAaXNb8TQ4KpwhBQYm7Rjt4T1WFgY&scisig=AHkA5jQAAAAAaXNb8VrySnBtvaI29CPgYgXWygk&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <!-- <button onclick="toggleBibtex('paper5')" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-quote-left mr-1"></i> Cite
+                        </button> -->
+                        <button onclick="toggleBibtex('paper5')" 
+                                class="bg-amber-500 text-white px-3 py-1 rounded-full text-[11px] font-bold hover:bg-amber-600 active:scale-95 transition-all shadow-sm">
+                            <i class="fas fa-quote-left mr-1 text-[9px]"></i> Cite
+                        </button>
+                    </div>
+                    <div id="paper5" class="hidden mt-4 animate-fadeIn">
+                        <div class="relative group">
+                            <pre class="bg-gray-900 text-gray-300 p-4 rounded-xl text-[10px] overflow-x-auto leading-relaxed">
+@inproceedings{bian2025dynamiccity,
+  title={DynamicCity: Large-Scale 4D Occupancy Generation from Dynamic Scenes},
+  author={Bian, Hengwei and Kong, Lingdong and Xie, Haozhe and Pan, Liang and Qiao, Yu and Liu, Ziwei},
+  booktitle={Proceedings of the International Conference on Learning Representations (ICLR)},
+  year={2025},
+}
+</pre>
+                            <button onclick="copyBib('paper5')" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded text-[9px]">
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -370,7 +508,29 @@
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2410.07164" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
                         <a href="https://github.com/yukangcao/AvatarGO" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:2zkuw1cpmcQJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJaPYI:AHkA5jQAAAAAaXNcJYIO9qLmFSV0uOa31eh9Yfo&scisig=AHkA5jQAAAAAaXNcJdpUfpR0GYogMEAjqyzSQ48&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
+                        <!-- <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:2zkuw1cpmcQJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJaPYI:AHkA5jQAAAAAaXNcJYIO9qLmFSV0uOa31eh9Yfo&scisig=AHkA5jQAAAAAaXNcJdpUfpR0GYogMEAjqyzSQ48&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <!-- <button onclick="toggleBibtex('paper6')" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100 hover:bg-gray-100 transition-colors">
+                            <i class="fas fa-quote-left mr-1"></i> Cite
+                        </button> -->
+                        <button onclick="toggleBibtex('paper6')" 
+                                class="bg-amber-500 text-white px-3 py-1 rounded-full text-[11px] font-bold hover:bg-amber-600 active:scale-95 transition-all shadow-sm">
+                            <i class="fas fa-quote-left mr-1 text-[9px]"></i> Cite
+                        </button>
+                    </div>
+                    <div id="paper6" class="hidden mt-4 animate-fadeIn">
+                        <div class="relative group">
+                            <pre class="bg-gray-900 text-gray-300 p-4 rounded-xl text-[10px] overflow-x-auto leading-relaxed">
+@article{cao2024avatargo,
+  title={AvatarGO: Zero-shot 4D Human-Object Interaction Generation and Animation},
+  author={Cao, Yukang and Pan, Liang and Han, Kai and Wong, Kwan-Yee~K. and Liu, Ziwei},
+  journal={arXiv preprint arXiv:2410.07164},
+  year={2024}
+}
+</pre>
+                            <button onclick="copyBib('paper6')" class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/10 hover:bg-white/20 text-white px-2 py-1 rounded text-[9px]">
+                                Copy
+                            </button>
+                        </div>
                     </div>
                 </div>
 
