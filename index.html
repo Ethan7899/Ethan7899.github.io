@@ -36,11 +36,55 @@
         a.mylink0:hover   { color: #00aaff; }
         /* 点击瞬间 */
         a.mylink0:active  { color: #ff0000; }
+        html {
+            scroll-behavior: smooth;
+            /* 解决导航栏遮挡标题的问题：给跳转预留出导航栏的高度 */
+            scroll-padding-top: 80px; 
+        }
     </style>
 </head>
+
+<button id="backToTop" class="fixed bottom-8 right-8 w-10 h-10 glass-card flex items-center justify-center text-gray-500 opacity-0 invisible hover:text-blue-600 hover:scale-110 transition-all duration-300 z-[60] shadow-lg">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+    const backToTopBtn = document.getElementById('backToTop');
+
+    // 监听滚动事件
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) { // 当向下滚动超过 300 像素时显示
+            backToTopBtn.classList.remove('opacity-0', 'invisible');
+            backToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+            backToTopBtn.classList.remove('opacity-100', 'visible');
+            backToTopBtn.classList.add('opacity-0', 'invisible');
+        }
+    });
+
+    // 点击回到顶部
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // 平滑滚动
+        });
+    });
+</script>
+
 <body class="py-12 px-4 md:px-0">
     <div class="max-w-4xl mx-auto">
         
+        <nav class="sticky top-0 z-50 glass-card mx-auto max-w-4xl mt-4 px-6 py-3 flex justify-between items-center mb-8 border-none shadow-sm">
+            <div class="text-sm font-bold text-gray-800">Liang PAN</div>
+            <div class="flex gap-6 text-[11px] uppercase tracking-widest font-semibold text-gray-500">
+                <a href="#about" class="hover:text-blue-600 transition-colors">About</a>
+                <a href="#news" class="hover:text-blue-600 transition-colors">News</a>
+                <a href="#research" class="hover:text-blue-600 transition-colors">Research</a>
+                <a href="#publications" class="hover:text-blue-600 transition-colors">Publications</a>
+            </div>
+        </nav>
+
+
         <header class="glass-card p-8 mb-8 flex flex-col md:flex-row items-center gap-8">
             <!-- <img src="./PL.jpeg" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-sm"> -->
             <!-- <img src="./PL.jpeg" alt="Profile Photo" class="w-32 h-32 rounded-2xl object-cover border-4 border-white shadow-sm"> -->
@@ -50,15 +94,15 @@
                 <!-- <p class="text-xl text-gray-600 mb-4">某某大学 计算机学院 博士研究生</p> -->
                 <p class="text-xl text-gray-600 mb-4"> Co-Founder & Director of Ambient Capture Team, ACE Robotics </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="pan.liang@nus.edu.sg" class="text-blue-600 hover:text-blue-800"><i class="fas fa-envelope mr-1"></i> Email</a>
+                    <a href="pan.liang@nus.edu.sg" target="_blank" rel="noopener" class="text-blue-600 hover:text-blue-800"><i class="fas fa-envelope mr-1"></i> Email</a>
                     <!-- <a href="#" class="text-gray-700 hover:text-black"><i class="fab fa-github mr-1"></i> GitHub</a> -->
-                    <!-- <a href="#" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter mr-1"></i> Twitter</a> -->
-                    <a href="https://scholar.google.com/citations?user=lSDISOcAAAAJ&hl=en" class="text-red-500 hover:text-red-700"><i class="fas fa-graduation-cap mr-1"></i> Google Scholar</a>
+                    <a href="https://x.com/pldeqiushui" target="_blank" rel="noopener" class="text-blue-400 hover:text-blue-600"><i class="fab fa-twitter mr-1"></i> Twitter</a>
+                    <a href="https://scholar.google.com/citations?user=lSDISOcAAAAJ&hl=en" target="_blank" rel="noopener" class="text-red-500 hover:text-red-700"><i class="fas fa-graduation-cap mr-1"></i> Google Scholar</a>
                 </div>
             </div>
         </header>
 
-        <section class="mb-8">
+        <section id="about" class="mb-8">
             <!-- <h2 class="text-2xl font-semibold mb-4 px-2">Biography</h2> -->
              <h2 class="text-2xl font-semibold mb-4 px-2">Short Biography <span class="text-sm font-normal text-gray-400 ml-2">个人简介</span></h2>
             <div class="glass-card p-6 leading-relaxed text-gray-700">
@@ -176,7 +220,7 @@
 
         <!-- <section class="mb-8 pt-8 border-t border-white/50 shadow-[inset_0_1px_0_0_rgba(0,0,0,0.05)]"></section> -->
 
-        <section class="mb-8">
+        <section id="news" class="mb-8">
             <h2 class="text-2xl font-semibold mb-4 px-2">News <span class="text-sm font-normal text-gray-400 ml-2">最新动态</span></h2>
             <div class="glass-card p-6">
                 <div class="space-y-4 max-h-64 overflow-y-auto pr-2 custom-scrollbar">
@@ -236,7 +280,7 @@
 
         <!-- <section class="mb-8 pt-8 border-t border-white/50 shadow-[inset_0_1px_0_0_rgba(0,0,0,0.05)]"></section> -->
 
-        <section class="mb-8">
+        <section id="research" class="mb-8">
             <!-- <h2 class="text-2xl font-semibold mb-4 px-2">Research Interests</h2> -->
             <h2 class="text-2xl font-semibold mb-4 px-2">Research Interests <span class="text-sm font-normal text-gray-400 ml-2">研究方向</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -260,7 +304,7 @@
 
         <section class="mb-8 pt-8 border-t border-white/50 shadow-[inset_0_1px_0_0_rgba(0,0,0,0.05)]"></section>
 
-        <section class="mb-8">
+        <section id="publications" class="mb-8">
             <h2 class="text-2xl font-semibold mb-4 px-2">Selected Publication | <a class="mylink1" href="https://scholar.google.com/citations?user=lSDISOcAAAAJ&hl=en" target="_blank" rel="noopener">Full List</a> </h2>
             <div class="space-y-4">
                 
@@ -270,8 +314,8 @@
                     <p class="text-gray-500 text-[13px] italic">NeurIPS 2025 (Spotlight)</p>
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2507.12465" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
-                        <!-- <a href="#" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="#" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <a href="https://github.com/ziangcao0312/PhysX-3D" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
+                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:8ltlIWNaFlkJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJcoio:AHkA5jQAAAAAaXNauir_VeRvPJI3S2nriTclnAo&scisig=AHkA5jQAAAAAaXNaur1bqBBR10czLiT93e7TB0Y&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
                     </div>
                 </div>
 
@@ -281,8 +325,8 @@
                     <p class="text-gray-500 text-[13px] italic">NeurIPS 2025</p>
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2411.18624" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
-                        <!-- <a href="#" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a> -->
-                        <!-- <a href="#" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <a href="https://github.com/3DTopia/GeneMAN" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
+                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:ZiZewkugPUYJ:scholar.google.com/&output=citation&scisdr=Cn1nfVALENeqsMJdDXY:AHkA5jQAAAAAaXNbFXaUaARKofd0JvduhnN_GUk&scisig=AHkA5jQAAAAAaXNbFR4Kc7prmJVknKasTM-6DSs&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
                     </div>
                 </div>
                 
@@ -292,8 +336,8 @@
                     <p class="text-gray-500 text-[13px] italic">NeurIPS 2025 Datasets and Benchmarks Track</p>
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2508.05609" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
-                        <!-- <a href="#" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
-                        <a href="#" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <a href="https://github.com/3DTopia/Hi3DEval" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
+                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:GhqLvNnr1VgJ:scholar.google.com/&output=citation&scisdr=Cn1nfVAKENeqsMJdY7w:AHkA5jQAAAAAaXNbe7wpNg08it0r8Wiu_DCA03g&scisig=AHkA5jQAAAAAaXNbe887boXEHKKJWPtm3FzONfM&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
                     </div>
                 </div>
 
@@ -303,8 +347,8 @@
                     <p class="text-gray-500 text-[13px] italic">CVPR 2025</p>
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2411.02336" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
-                        <!-- <a href="#" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a> -->
-                        <!-- <a href="#" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <a href="https://github.com/3DTopia/MVPaint" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
+                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:lXGd8ZfXgK8J:scholar.google.com/&output=citation&scisdr=Cn1nfVAKENeqsMJdlOw:AHkA5jQAAAAAaXNbjOyoGLDgxPNBcVr-frEET-Q&scisig=AHkA5jQAAAAAaXNbjMRdaYuzEuU-5aLtTAFJ8qI&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
                     </div>
                 </div>
 
@@ -314,8 +358,8 @@
                     <p class="text-gray-500 text-[13px] italic">ICLR 2025 (Highlight)</p>
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://openreview.net/pdf?id=M7KyLjuN0A" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
-                        <!-- <a href="#" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a> -->
-                        <!-- <a href="#" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <a href="https://github.com/3DTopia/DynamicCity" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
+                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:CdW4r-1aqQcJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJd6TQ:AHkA5jQAAAAAaXNb8TQ4KpwhBQYm7Rjt4T1WFgY&scisig=AHkA5jQAAAAAaXNb8VrySnBtvaI29CPgYgXWygk&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
                     </div>
                 </div>
 
@@ -325,8 +369,8 @@
                     <p class="text-gray-500 text-[13px] italic">ICLR 2025</p>
                     <div class="mt-3 flex gap-3 text-xs">
                         <a href="https://arxiv.org/pdf/2410.07164" class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full border border-blue-100">Paper</a>
-                        <!-- <a href="#" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a> -->
-                        <!-- <a href="#" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a> -->
+                        <a href="https://github.com/yukangcao/AvatarGO" class="bg-gray-50 text-gray-600 px-3 py-1 rounded-full border border-gray-100">Code</a>
+                        <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:2zkuw1cpmcQJ:scholar.google.com/&output=citation&scisdr=Cn1nfVABENeqsMJaPYI:AHkA5jQAAAAAaXNcJYIO9qLmFSV0uOa31eh9Yfo&scisig=AHkA5jQAAAAAaXNcJdpUfpR0GYogMEAjqyzSQ48&scisf=4&ct=citation&cd=-1&hl=en" class="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full border border-yellow-100">BibTeX</a>
                     </div>
                 </div>
 
@@ -334,36 +378,36 @@
         </section>
 
     
-    <!-- <section class="mt-12 flex flex-col items-center">
-        <h3 class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-4">Visitor Map</h3>
-        <div class="glass-card p-4">
-            <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=lFqDk8RzzqBEM1YJcP38LyHOz3JOjUESG7EdZEJEpqs&cl=ffffff&w=a"></script>
-        </div>
-    </section> -->
-    
-    <section class="mt-12 flex flex-col items-center">
-        <div class="glass-card p-4 inline-block">
-            <a href="https://mapmyvisitors.com/web/1c1yu"  title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=lFqDk8RzzqBEM1YJcP38LyHOz3JOjUESG7EdZEJEpqs&cl=ffffff" /></a>
-        </div>
-    </section>
+        <!-- <section class="mt-12 flex flex-col items-center">
+            <h3 class="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-4">Visitor Map</h3>
+            <div class="glass-card p-4">
+                <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=lFqDk8RzzqBEM1YJcP38LyHOz3JOjUESG7EdZEJEpqs&cl=ffffff&w=a"></script>
+            </div>
+        </section> -->
+        
+        <section class="mt-12 flex flex-col items-center">
+            <div class="glass-card p-4 inline-block">
+                <a href="https://mapmyvisitors.com/web/1c1yu"  title="Visit tracker"><img src="https://mapmyvisitors.com/map.png?d=lFqDk8RzzqBEM1YJcP38LyHOz3JOjUESG7EdZEJEpqs&cl=ffffff" /></a>
+            </div>
+        </section>
 
-     <!-- <section class="mt-12 flex flex-col items-center">
-        <div class="glass-card p-4 inline-block">
-            <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=FJL9LaI32HIDV7FuAGbdWtiz_jfI0phD9avjSKPDS0k"></script>
-        </div>
-    </section> -->
+        <!-- <section class="mt-12 flex flex-col items-center">
+            <div class="glass-card p-4 inline-block">
+                <script type="text/javascript" id="mmvst_globe" src="//mapmyvisitors.com/globe.js?d=FJL9LaI32HIDV7FuAGbdWtiz_jfI0phD9avjSKPDS0k"></script>
+            </div>
+        </section> -->
 
 
-    <footer class="mt-12 text-center text-gray-400 text-sm">
-        <div class="text-center text-gray-400 text-xs mt-4">
-            <span id="busuanzi_container_site_pv">
-                Total Visits of this Website: <span id="busuanzi_value_site_pv" class="font-bold"></span> .
-            </span>
-        </div>
-        &copy; Last Update: 2026/01. All rights reserved.
-    </footer>
+        <footer class="mt-12 text-center text-gray-400 text-sm">
+            <div class="text-center text-gray-400 text-xs mt-4">
+                <span id="busuanzi_container_site_pv">
+                    Total Visits of this Website: <span id="busuanzi_value_site_pv" class="font-bold"></span> .
+                </span>
+            </div>
+            &copy; Last Update: 2026/01. All rights reserved.
+        </footer>
 
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    </div>
 </body>
 </html>
